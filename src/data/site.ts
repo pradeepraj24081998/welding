@@ -95,3 +95,4 @@ export function getWhatsAppUrl(message?: string, customPhone?: string): string {
   if (!message) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }
+

@@ -44,3 +44,4 @@ export const TESTIMONIALS_DATA: TestimonialItem[] = [
     isIllustrativePlaceholder: true
   }
 ];
+

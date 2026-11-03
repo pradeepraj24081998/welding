@@ -175,3 +175,4 @@ export default function MetallicBeam3D() {
     </div>
   );
 }
+

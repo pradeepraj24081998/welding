@@ -10,3 +10,4 @@ export default function robots(): MetadataRoute.Robots {
     sitemap: `${SITE_DATA.meta.siteUrl}/sitemap.xml`
   };
 }
+

@@ -79,3 +79,4 @@ export const WHY_CHOOSE_US_DATA: WhyChooseUsFeature[] = [
     icon: "Users"
   }
 ];
+
