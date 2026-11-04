@@ -8,7 +8,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   toggleLanguage: () => void;
-}
+}     
 
 const LanguageContext = createContext<LanguageContextType>({
   language: "ta",
