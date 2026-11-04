@@ -5,7 +5,6 @@ import Services from "@/components/Services";
 import Projects from "@/components/Projects";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import WorkProcess from "@/components/WorkProcess";
-import Testimonials from "@/components/Testimonials";
 import CTA from "@/components/CTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
@@ -22,7 +21,6 @@ export default function Home() {
         <Projects />
         <WhyChooseUs />
         <WorkProcess />
-        <Testimonials />
         <CTA />
         <Contact />
       </main>

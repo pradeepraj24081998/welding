@@ -1,0 +1,46 @@
+{
+  "name": "Logeshwaran Welding & Metal Fabrication",
+  "short_name": "Logeshwaran Welding",
+  "description": "துறையூர் & திருச்சியில் தரமான ஸ்டெயின்லெஸ் ஸ்டீல் (SS) ரெயிலிங், கேட், கிரில் & வெல்டிங் வேலைகள்.",
+  "start_url": "/",
+  "id": "/",
+  "display": "standalone",
+  "background_color": "#080B0F",
+  "theme_color": "#FF7628",
+  "orientation": "portrait-primary",
+  "lang": "ta",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "categories": ["business", "utilities", "productivity"],
+  "shortcuts": [
+    {
+      "name": "அழைக்க (Call)",
+      "url": "tel:+919150375567",
+      "description": "உடனடி தொடர்பு கொள்ள"
+    },
+    {
+      "name": "வாட்ஸ்அப் (WhatsApp)",
+      "url": "https://wa.me/919150375567?text=%E0%AE%B5%E0%AE%A3%E0%AE%95%E0%AF%8D%E0%AE%95%E0%AE%AE%E0%AF%8D%2C+%E0%AE%B5%E0%AF%86%E0%AE%B2%E0%AF%8D%E0%AE%9F%E0%AE%BF%E0%AE%99%E0%AF%8D+%E0%AE%B5%E0%AF%87%E0%AE%B2%E0%AF%88+%E0%AE%AA%E0%AE%B1%E0%AF%8D%E0%AE%B1%E0%AE%BF+%E0%AE%A4%E0%AF%86%E0%AE%B0%E0%AE%BF%E0%AE%A8%E0%AF%8D%E0%AE%A4%E0%AF%81+%E0%AE%95%E0%AF%8A%E0%AE%B3%E0%AF%8D%E0%AE%B3+%E0%AE%B5%E0%AE%BF%E0%AE%B0%E0%AF%81%E0%AE%AE%E0%AF%8D%E0%AE%AA%E0%AF%81%E0%AE%95%E0%AE%BF%E0%AE%B1%E0%AF%87%E0%AE%A9%E0%AF%8D.",
+      "description": "WhatsApp செய்தி அனுப்ப"
+    }
+  ]
+}
+

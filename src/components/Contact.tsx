@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { SITE_DATA, getWhatsAppUrl } from "@/data/site";
 import { SERVICES_DATA } from "@/data/services";
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
 import confetti from "canvas-confetti";
 import {
   Phone,
@@ -20,10 +22,13 @@ import {
 } from "lucide-react";
 
 export default function Contact() {
+  const { language } = useLanguage();
+  const t = TRANSLATIONS[language];
+
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
-    service: SERVICES_DATA[0].title,
+    service: SERVICES_DATA[0].title[language],
     description: "",
   });
 
@@ -32,14 +37,11 @@ export default function Contact() {
 
   const validate = () => {
     const errors: { [key: string]: string } = {};
-    if (!formData.name.trim()) errors.name = "Please enter your full name";
-    if (!formData.phone.trim()) {
-      errors.phone = "Please enter your contact phone number";
-    } else if (!/^[0-9+\s-]{8,15}$/.test(formData.phone.trim())) {
-      errors.phone = "Please enter a valid phone number";
+    if (!formData.name.trim()) {
+      errors.name = language === "ta" ? "உங்கள் பெயரை உள்ளிடவும்" : "Please enter your name";
     }
-    if (!formData.description.trim()) {
-      errors.description = "Please describe what work or dimensions you need";
+    if (!formData.phone.trim()) {
+      errors.phone = language === "ta" ? "மொபைல் எண் அவசியம்" : "Please enter your phone number";
     }
     return errors;
   };
@@ -54,27 +56,33 @@ export default function Contact() {
 
     setFormErrors({});
 
-    // Construct formatted WhatsApp message
-    const formattedMessage = [
+    const formattedMessage = language === "ta" ? [
+      `*புதிய வெல்டிங் விசாரணை*`,
+      `---------------------------------`,
+      `*பெயர்:* ${formData.name}`,
+      `*மொபைல்:* ${formData.phone}`,
+      `*தேவையான வேலை:* ${formData.service}`,
+      formData.description ? `*விவரம்:* ${formData.description}` : "",
+      `---------------------------------`,
+      `_லோகேஸ்வரன் வெல்டிங் தளம் வழியாக அனுப்பப்பட்டது_`
+    ].filter(Boolean).join("\n") : [
       `*NEW FABRICATION ENQUIRY*`,
       `---------------------------------`,
       `*Customer Name:* ${formData.name}`,
-      `*Customer Phone:* ${formData.phone}`,
+      `*Phone:* ${formData.phone}`,
       `*Service Required:* ${formData.service}`,
-      `*Project Details:* ${formData.description}`,
+      formData.description ? `*Details:* ${formData.description}` : "",
       `---------------------------------`,
-      `_Sent via Logeshwaran Welding & Fabrication Website_`
-    ].join("\n");
+      `_Sent via Logeshwaran Welding Website_`
+    ].filter(Boolean).join("\n");
 
-    // Launch WhatsApp
     const whatsappUrl = getWhatsAppUrl(formattedMessage);
     window.open(whatsappUrl, "_blank");
 
-    // Trigger celebration confetti
     try {
       confetti({
-        particleCount: 50,
-        spread: 60,
+        particleCount: 40,
+        spread: 50,
         origin: { y: 0.8 },
         colors: ["#FF7628", "#FFB86C", "#FFFFFF"]
       });
@@ -86,96 +94,76 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative py-24 sm:py-32 bg-[#080B0F] border-t border-[#29333D]/60 overflow-hidden">
-      {/* Background glow */}
+    <section id="contact" className="relative py-20 sm:py-28 bg-[#080B0F] border-t border-[#29333D]/60 overflow-hidden">
       <div className="absolute bottom-0 right-1/4 -z-10 h-96 w-96 rounded-full bg-[#FF7628]/5 blur-3xl pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#29333D] bg-[#161E27] px-3.5 py-1 text-xs font-semibold tracking-wider text-[#FF7628] uppercase">
             <Sparkles className="h-3 w-3" />
-            <span>Direct Client Consultation</span>
+            <span>{t.contact.badge}</span>
           </div>
 
-          <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white uppercase leading-tight">
-            LET&apos;S DISCUSS <br />
-            <span className="welding-gradient-text">YOUR PROJECT</span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight text-white uppercase leading-tight">
+            {t.contact.title}
           </h2>
 
-          <p className="text-base text-[#A8B0B9] leading-relaxed">
-            Reach out directly to Logeshwaran for site inspections, quotation estimates, or
-            custom stainless steel fabrication consultations in Thuraiyur & Tiruchirappalli.
+          <p className="text-sm sm:text-base text-[#A8B0B9] leading-relaxed">
+            {t.contact.subtitle}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
-          {/* Left Column: Verified Business Information & Phone Numbers */}
+        {/* Contact Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Left Column: Direct Phone numbers & Location details */}
           <div className="lg:col-span-5 space-y-6">
-            {/* Primary Business Card */}
-            <div className="metallic-card rounded-2xl p-6 sm:p-8 space-y-6">
-              <div>
-                <span className="text-[11px] font-mono uppercase tracking-widest text-[#FF7628] font-semibold block">
-                  Proprietor & Master Fabricator
-                </span>
-                <h3 className="font-display text-2xl font-bold text-white mt-1">
-                  {SITE_DATA.owner}
-                </h3>
-                <p className="text-xs text-[#A8B0B9] mt-0.5 font-medium">
-                  {SITE_DATA.name}
-                </p>
-              </div>
+            <div className="rounded-2xl border border-[#29333D] bg-[#111820] p-6 space-y-5">
+              <h3 className="font-display text-lg font-bold text-white flex items-center gap-2">
+                <Phone className="h-5 w-5 text-[#FF7628]" />
+                <span>{t.contact.directCallTitle}</span>
+              </h3>
 
-              {/* Direct Phone Numbers (Click to Call) */}
-              <div className="space-y-3 pt-4 border-t border-[#29333D]">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#C5CCD3]">
-                  Direct Contact Numbers (Click to Call)
-                </h4>
-                {SITE_DATA.phones.map((phone) => (
+              <div className="space-y-3">
+                {SITE_DATA.phones.map((phone, idx) => (
                   <a
                     key={phone.primary}
                     href={`tel:${phone.primary}`}
-                    className="flex items-center justify-between p-3 rounded-xl border border-[#29333D] bg-[#111820] hover:border-[#FF7628]/60 hover:bg-[#161E27] transition-all group"
+                    className="flex items-center justify-between rounded-xl border border-[#29333D] bg-[#161E27] p-3.5 hover:border-[#FF7628] hover:bg-[#1E293B] transition-all group"
                   >
-                    <div className="flex items-center gap-3">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#080B0F] border border-[#29333D] text-[#FF7628] group-hover:scale-105 transition-transform">
-                        <Phone className="h-4 w-4" />
-                      </div>
-                      <div>
-                        <span className="font-mono text-sm font-bold text-white group-hover:text-[#FFB86C] transition-colors block">
-                          {phone.display}
-                        </span>
-                        <span className="text-[11px] text-[#A8B0B9]">
-                          {phone.label || "Available for Inquiries"}
-                        </span>
-                      </div>
+                    <div>
+                      <span className="text-xs text-[#A8B0B9] block font-medium">
+                        {language === "ta" ? phone.labelTa : phone.label}
+                      </span>
+                      <span className="text-sm sm:text-base font-bold text-white group-hover:text-[#FF8F3D] transition-colors">
+                        {phone.display}
+                      </span>
                     </div>
-                    <span className="text-xs text-[#FF7628] font-semibold group-hover:translate-x-1 transition-transform">
-                      Call Now &rarr;
+                    <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#FF7628]/15 text-[#FF7628] group-hover:bg-[#FF7628] group-hover:text-white transition-colors">
+                      <Phone className="h-4 w-4" />
                     </span>
                   </a>
                 ))}
               </div>
 
               {/* Location Card */}
-              <div className="space-y-2 pt-4 border-t border-[#29333D]">
-                <h4 className="text-xs font-mono uppercase tracking-wider text-[#C5CCD3]">
-                  Workshop Location
-                </h4>
-                <div className="flex items-start gap-3 p-3 rounded-xl border border-[#29333D] bg-[#111820]">
+              <div className="pt-4 border-t border-[#29333D]/70 space-y-2">
+                <div className="flex items-start gap-2.5">
                   <MapPin className="h-5 w-5 text-[#FF7628] shrink-0 mt-0.5" />
-                  <div className="text-xs text-[#A8B0B9] leading-relaxed flex-1">
-                    <p className="font-semibold text-white">
-                      {SITE_DATA.location.city}, {SITE_DATA.location.district}
+                  <div>
+                    <h4 className="text-sm font-bold text-white">{t.contact.locationTitle}</h4>
+                    <p className="text-xs text-[#A8B0B9] mt-0.5">
+                      {language === "ta"
+                        ? "துறையூர் மெயின் ரோடு, துறையூர், திருச்சிராப்பள்ளி மாவட்டம், தமிழ்நாடு - 621010."
+                        : "Thuraiyur Main Road, Thuraiyur, Tiruchirappalli District, Tamil Nadu - 621010."}
                     </p>
-                    <p>{SITE_DATA.location.state}, India</p>
                     <a
                       href={SITE_DATA.location.mapsUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 text-xs text-[#FF8F3D] font-semibold hover:underline mt-2"
+                      className="inline-flex items-center gap-1 text-xs font-semibold text-[#FF7628] hover:text-[#FF8F3D] mt-2 transition-colors"
                     >
-                      <span>Open in Google Maps</span>
+                      <span>Google Maps-ல் பார்க்க</span>
                       <ExternalLink className="h-3 w-3" />
                     </a>
                   </div>
@@ -183,163 +171,125 @@ export default function Contact() {
               </div>
 
               {/* Working Hours */}
-              <div className="flex items-center gap-3 p-3 rounded-xl border border-[#29333D] bg-[#111820] text-xs text-[#A8B0B9]">
-                <Clock className="h-4 w-4 text-[#FF7628] shrink-0" />
-                <span>{SITE_DATA.workingHours}</span>
+              <div className="pt-4 border-t border-[#29333D]/70 flex items-start gap-2.5">
+                <Clock className="h-5 w-5 text-[#FF7628] shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="text-sm font-bold text-white">{t.contact.hoursTitle}</h4>
+                  <p className="text-xs text-[#A8B0B9] mt-0.5">
+                    {language === "ta" ? SITE_DATA.workingHoursTa : SITE_DATA.workingHours}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column: WhatsApp Quote & Enquiry Form (Browser-Validated) */}
+          {/* Right Column: Quick WhatsApp Enquiry Form */}
           <div className="lg:col-span-7">
-            <div className="metallic-card rounded-2xl p-6 sm:p-8 relative">
-              <div className="mb-6 space-y-1">
-                <span className="text-xs font-mono uppercase tracking-wider text-[#FF7628] font-bold">
-                  Instant Quote Estimator
-                </span>
-                <h3 className="font-display text-2xl font-bold text-white">
-                  Send Your Project Details
-                </h3>
-                <p className="text-xs text-[#A8B0B9]">
-                  Fill out the form below. On submission, WhatsApp will open with your prefilled
-                  project specifications directly to Logeshwaran.
-                </p>
+            <div className="rounded-2xl border border-[#29333D] bg-[#111820] p-6 sm:p-8 space-y-6">
+              <div className="flex items-center justify-between pb-3 border-b border-[#29333D]">
+                <div>
+                  <h3 className="font-display text-lg font-bold text-white">
+                    {t.contact.quickMsgTitle}
+                  </h3>
+                  <p className="text-xs text-[#A8B0B9] mt-0.5">
+                    {language === "ta"
+                      ? "விவரங்களை நிரப்பினால் உடனே வாட்ஸ்அப்பில் மெசேஜ் செல்லும்"
+                      : "Fill in your requirements to generate an instant WhatsApp inquiry"}
+                  </p>
+                </div>
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#25D366]/15 text-[#25D366] border border-[#25D366]/30">
+                  <MessageCircle className="h-5 w-5" />
+                </div>
               </div>
 
-              {submittedWhatsApp && (
-                <div className="mb-6 p-4 rounded-xl border border-[#FF7628]/40 bg-[#FF7628]/10 text-white flex items-start gap-3">
-                  <CheckCircle className="h-5 w-5 text-[#FF7628] shrink-0 mt-0.5" />
-                  <div className="text-xs space-y-1">
-                    <p className="font-bold text-[#FF8F3D]">WhatsApp Message Generated!</p>
-                    <p className="text-[#C5CCD3]">
-                      WhatsApp has been launched with your enquiry. If your browser blocked the
-                      popup,{" "}
-                      <a
-                        href={getWhatsAppUrl(`*New Enquiry from ${formData.name}:* ${formData.description}`)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline text-white font-bold"
-                      >
-                        click here to open WhatsApp directly
-                      </a>
-                      .
-                    </p>
-                  </div>
-                </div>
-              )}
-
-              <form onSubmit={handleSubmit} className="space-y-5">
-                {/* Name */}
-                <div>
-                  <label className="block text-xs font-semibold text-[#C5CCD3] uppercase tracking-wider mb-2">
-                    Customer Name *
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#718096]">
-                      <User className="h-4 w-4" />
-                    </div>
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* Name Input */}
+                  <div>
+                    <label className="block text-xs font-semibold text-[#C5CCD3] mb-1.5">
+                      {t.contact.formName} *
+                    </label>
                     <input
                       type="text"
-                      placeholder="e.g. Ramesh Kumar"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className={`w-full rounded-xl border bg-[#111820] pl-10 pr-4 py-3 text-sm text-white placeholder-[#718096] focus:outline-none focus:ring-1 focus:ring-[#FF7628] ${
-                        formErrors.name ? "border-red-500" : "border-[#29333D] focus:border-[#FF7628]"
-                      }`}
+                      placeholder={language === "ta" ? "எ.கா. குமார்" : "e.g. Ramesh Kumar"}
+                      className="w-full rounded-xl border border-[#29333D] bg-[#161E27] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-[#7A889B] focus:border-[#FF7628] focus:outline-none transition-colors"
                     />
+                    {formErrors.name && (
+                      <p className="mt-1 text-[11px] text-[#FF4D00]">{formErrors.name}</p>
+                    )}
                   </div>
-                  {formErrors.name && (
-                    <p className="text-[11px] text-red-400 mt-1">{formErrors.name}</p>
-                  )}
-                </div>
 
-                {/* Phone */}
-                <div>
-                  <label className="block text-xs font-semibold text-[#C5CCD3] uppercase tracking-wider mb-2">
-                    Contact Phone Number *
-                  </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#718096]">
-                      <Phone className="h-4 w-4" />
-                    </div>
+                  {/* Phone Input */}
+                  <div>
+                    <label className="block text-xs font-semibold text-[#C5CCD3] mb-1.5">
+                      {t.contact.formPhone} *
+                    </label>
                     <input
                       type="tel"
-                      placeholder="e.g. +91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className={`w-full rounded-xl border bg-[#111820] pl-10 pr-4 py-3 text-sm text-white placeholder-[#718096] focus:outline-none focus:ring-1 focus:ring-[#FF7628] ${
-                        formErrors.phone ? "border-red-500" : "border-[#29333D] focus:border-[#FF7628]"
-                      }`}
+                      placeholder={language === "ta" ? "எ.கா. 9876543210" : "e.g. 9876543210"}
+                      className="w-full rounded-xl border border-[#29333D] bg-[#161E27] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-[#7A889B] focus:border-[#FF7628] focus:outline-none transition-colors"
                     />
+                    {formErrors.phone && (
+                      <p className="mt-1 text-[11px] text-[#FF4D00]">{formErrors.phone}</p>
+                    )}
                   </div>
-                  {formErrors.phone && (
-                    <p className="text-[11px] text-red-400 mt-1">{formErrors.phone}</p>
-                  )}
                 </div>
 
-                {/* Service Dropdown */}
+                {/* Service Selector */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#C5CCD3] uppercase tracking-wider mb-2">
-                    Service Required *
+                  <label className="block text-xs font-semibold text-[#C5CCD3] mb-1.5">
+                    {t.contact.formService}
                   </label>
-                  <div className="relative">
-                    <div className="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-[#718096]">
-                      <Wrench className="h-4 w-4" />
-                    </div>
-                    <select
-                      value={formData.service}
-                      onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                      className="w-full rounded-xl border border-[#29333D] bg-[#111820] pl-10 pr-4 py-3 text-sm text-white focus:outline-none focus:border-[#FF7628] focus:ring-1 focus:ring-[#FF7628]"
-                    >
-                      {SERVICES_DATA.map((s) => (
-                        <option key={s.id} value={s.title} className="bg-[#111820] text-white">
-                          {s.title}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
+                  <select
+                    value={formData.service}
+                    onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+                    className="w-full rounded-xl border border-[#29333D] bg-[#161E27] px-3.5 py-2.5 text-xs sm:text-sm text-white focus:border-[#FF7628] focus:outline-none transition-colors"
+                  >
+                    {SERVICES_DATA.map((srv) => (
+                      <option key={srv.id} value={srv.title[language]}>
+                        {srv.title[language]} ({srv.recommendedGrade})
+                      </option>
+                    ))}
+                  </select>
                 </div>
 
-                {/* Project Description */}
+                {/* Message / Details */}
                 <div>
-                  <label className="block text-xs font-semibold text-[#C5CCD3] uppercase tracking-wider mb-2">
-                    Project Requirements / Dimensions / Location *
+                  <label className="block text-xs font-semibold text-[#C5CCD3] mb-1.5">
+                    {t.contact.formMessage}
                   </label>
-                  <div className="relative">
-                    <textarea
-                      rows={4}
-                      placeholder="e.g. Need stainless steel 304 staircase railing for a duplex home in Thuraiyur, approx 45 running feet with wood pillar..."
-                      value={formData.description}
-                      onChange={(e) =>
-                        setFormData({ ...formData, description: e.target.value })
-                      }
-                      className={`w-full rounded-xl border bg-[#111820] p-4 text-sm text-white placeholder-[#718096] focus:outline-none focus:ring-1 focus:ring-[#FF7628] ${
-                        formErrors.description
-                          ? "border-red-500"
-                          : "border-[#29333D] focus:border-[#FF7628]"
-                      }`}
-                    />
-                  </div>
-                  {formErrors.description && (
-                    <p className="text-[11px] text-red-400 mt-1">{formErrors.description}</p>
-                  )}
+                  <textarea
+                    rows={3}
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    placeholder={
+                      language === "ta"
+                        ? "தோராயமான அளவு அல்லது உங்களின் தேவையை குறிப்பிடவும்..."
+                        : "Approximate dimensions, site location, or any specific requirements..."
+                    }
+                    className="w-full rounded-xl border border-[#29333D] bg-[#161E27] px-3.5 py-2.5 text-xs sm:text-sm text-white placeholder-[#7A889B] focus:border-[#FF7628] focus:outline-none transition-colors"
+                  />
                 </div>
-
-                {/* Privacy & Direct WhatsApp notice */}
-                <p className="text-[11px] text-[#A8B0B9]">
-                  🔒 Direct client communication. No data is stored on external servers; clicking submit
-                  formats your inquiry and opens WhatsApp directly to Logeshwaran.
-                </p>
 
                 {/* Submit button */}
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF7628] to-[#FF5400] px-6 py-4 text-sm font-bold text-white shadow-xl shadow-[#FF7628]/30 hover:shadow-[#FF7628]/50 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
+                  className="w-full flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#FF7628] to-[#FF8F3D] py-3 px-6 text-sm font-bold text-white shadow-xl shadow-[#FF7628]/25 hover:shadow-[#FF7628]/40 hover:scale-[1.01] active:scale-[0.99] transition-all"
                 >
-                  <MessageCircle className="h-4 w-4" />
-                  <span>Send Enquiry via WhatsApp to Logeshwaran</span>
+                  <Send className="h-4 w-4" />
+                  <span>{t.contact.sendWhatsAppBtn}</span>
                 </button>
               </form>
+
+              {submittedWhatsApp && (
+                <div className="rounded-xl border border-[#25D366]/40 bg-[#25D366]/10 p-3 text-center text-xs text-[#25D366] font-semibold">
+                  ✓ {language === "ta" ? "வாட்ஸ்அப் திறக்கப்பட்டது! நன்றி." : "WhatsApp opened! Thank you."}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -347,4 +297,3 @@ export default function Contact() {
     </section>
   );
 }
-

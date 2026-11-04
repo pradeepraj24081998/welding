@@ -3,38 +3,35 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { SITE_DATA, getWhatsAppUrl } from "@/data/site";
-import { Phone, MessageCircle, Menu, X, Shield, Sparkles } from "lucide-react";
-
-interface NavLink {
-  name: string;
-  href: string;
-}
-
-const NAV_LINKS: NavLink[] = [
-  { name: "Home", href: "#hero" },
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Projects", href: "#projects" },
-  { name: "Why Us", href: "#why-choose-us" },
-  { name: "Process", href: "#process" },
-  { name: "Contact", href: "#contact" }
-];
+import { useLanguage } from "@/context/LanguageContext";
+import { TRANSLATIONS } from "@/data/translations";
+import { Phone, MessageCircle, Menu, X, Sparkles, Globe } from "lucide-react";
 
 export default function Navbar() {
+  const { language, setLanguage, toggleLanguage } = useLanguage();
+  const t = TRANSLATIONS[language];
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const navLinks = [
+    { name: t.nav.home, href: "#hero", id: "hero" },
+    { name: t.nav.services, href: "#services", id: "services" },
+    { name: t.nav.projects, href: "#projects", id: "projects" },
+    { name: t.nav.whyUs, href: "#why-choose-us", id: "why-choose-us" },
+    { name: t.nav.process, href: "#process", id: "process" },
+    { name: t.nav.contact, href: "#contact", id: "contact" }
+  ];
+
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 40) {
+      if (window.scrollY > 30) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
       }
 
-      // Determine active section
-      const sections = NAV_LINKS.map((link) => link.href.substring(1));
+      const sections = ["hero", "services", "projects", "why-choose-us", "process", "contact"];
       for (const sectionId of sections) {
         const el = document.getElementById(sectionId);
         if (el) {
@@ -56,8 +53,8 @@ export default function Navbar() {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
           isScrolled
-            ? "bg-[#080B0F]/95 backdrop-blur-md border-b border-[#29333D] shadow-2xl py-3.5"
-            : "bg-gradient-to-b from-[#080B0F]/90 via-[#080B0F]/50 to-transparent py-5"
+            ? "bg-[#080B0F]/95 backdrop-blur-md border-b border-[#29333D] shadow-2xl py-3"
+            : "bg-gradient-to-b from-[#080B0F]/95 via-[#080B0F]/60 to-transparent py-4"
         }`}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -67,167 +64,162 @@ export default function Navbar() {
               href="#hero"
               className="group flex items-center gap-3 transition-transform duration-200 hover:scale-[1.01]"
             >
-              <div className="relative flex h-11 w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#1E293B] via-[#161E27] to-[#0F172A] border border-[#384654] shadow-md group-hover:border-[#FF7628]/60 transition-colors">
+              <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#1E293B] via-[#161E27] to-[#0F172A] border border-[#384654] shadow-md group-hover:border-[#FF7628]/60 transition-colors">
                 <Sparkles className="h-5 w-5 text-[#FF7628] animate-pulse" />
                 <div className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full bg-[#FF7628] ring-2 ring-[#080B0F]" />
               </div>
 
               <div className="flex flex-col text-left">
-                <span className="font-display text-lg font-bold tracking-wider text-white uppercase group-hover:text-[#FFB86C] transition-colors leading-tight">
-                  LOGESHWARAN
+                <span className="font-display text-base sm:text-lg font-bold tracking-wider text-white uppercase group-hover:text-[#FFB86C] transition-colors leading-tight">
+                  {language === "ta" ? "லோகேஸ்வரன்" : "LOGESHWARAN"}
                 </span>
-                <span className="text-[10px] font-semibold tracking-widest text-[#A8B0B9] uppercase flex items-center gap-1.5">
+                <span className="text-[10px] font-semibold tracking-wider text-[#A8B0B9] uppercase flex items-center gap-1.5">
                   <span className="h-1 w-1 rounded-full bg-[#FF7628]" />
-                  WELDING & FABRICATION
+                  {language === "ta" ? "வெல்டிங் & ஃபேப்ரிகேஷன்" : "WELDING & FABRICATION"}
                 </span>
               </div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center space-x-1 xl:space-x-2">
-              {NAV_LINKS.map((link) => {
-                const isActive = activeSection === link.href.substring(1);
+            {/* Desktop Navigation Links */}
+            <nav className="hidden lg:flex items-center gap-1 rounded-full border border-[#29333D]/80 bg-[#111820]/80 p-1.5 backdrop-blur-md shadow-inner">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
                 return (
                   <Link
-                    key={link.name}
+                    key={link.id}
                     href={link.href}
-                    className={`relative px-3.5 py-1.5 text-sm font-medium transition-all duration-200 rounded-md ${
+                    className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 ${
                       isActive
-                        ? "text-white font-semibold"
-                        : "text-[#A8B0B9] hover:text-white hover:bg-[#161E27]/60"
+                        ? "bg-[#FF7628] text-white shadow-md shadow-[#FF7628]/25"
+                        : "text-[#C5CCD3] hover:text-white hover:bg-[#1E293B]/60"
                     }`}
                   >
                     {link.name}
-                    {isActive && (
-                      <span className="absolute bottom-0 left-3 right-3 h-[2px] bg-gradient-to-r from-transparent via-[#FF7628] to-transparent" />
-                    )}
                   </Link>
                 );
               })}
             </nav>
 
-            {/* Quick Contact & Action Buttons */}
-            <div className="hidden sm:flex items-center gap-3">
-              {/* Call Now */}
+            {/* Right Actions: Language Switcher + Call / WhatsApp CTA */}
+            <div className="flex items-center gap-2 sm:gap-3">
+              {/* Language Switcher Pill */}
+              <button
+                onClick={toggleLanguage}
+                title="Switch Language / மொழியை மாற்ற"
+                aria-label="Switch Language"
+                className="flex items-center gap-1.5 rounded-full border border-[#384654] bg-[#161E27]/90 px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-white shadow-sm hover:border-[#FF7628] hover:bg-[#1F2937] transition-all"
+              >
+                <Globe className="h-3.5 w-3.5 text-[#FF7628]" />
+                <span className={language === "ta" ? "text-[#FF8F3D]" : "text-[#A8B0B9]"}>தமிழ்</span>
+                <span className="text-[#384654]">/</span>
+                <span className={language === "en" ? "text-[#FF8F3D]" : "text-[#A8B0B9]"}>EN</span>
+              </button>
+
+              {/* Call Direct Button */}
               <a
                 href={`tel:${SITE_DATA.phones[0].primary}`}
-                className="flex items-center gap-2 rounded-lg border border-[#29333D] bg-[#161E27]/80 px-3.5 py-2 text-xs font-medium text-[#C5CCD3] hover:border-[#FF7628]/50 hover:text-white transition-all duration-200"
-                title="Call Logeshwaran"
+                className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-[#29333D] bg-[#161E27] px-3 py-2 text-xs font-semibold text-white hover:border-[#FF7628]/50 hover:bg-[#1F2937] transition-all shadow-sm"
               >
                 <Phone className="h-3.5 w-3.5 text-[#FF7628]" />
-                <span className="hidden md:inline font-mono">{SITE_DATA.phones[0].display}</span>
-                <span className="md:hidden">Call</span>
+                <span>{SITE_DATA.phones[0].display}</span>
               </a>
 
-              {/* WhatsApp Quote CTA */}
+              {/* WhatsApp Quick CTA */}
               <a
-                href={getWhatsAppUrl("Hello Logeshwaran, I would like to get a quote for welding & fabrication work.")}
+                href={getWhatsAppUrl(
+                  language === "ta"
+                    ? "வணக்கம், வெல்டிங் வேலை பற்றிய விவரம் அறிய விரும்புகிறேன்."
+                    : "Hello, I would like to inquire about your welding services."
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="relative group overflow-hidden flex items-center gap-2 rounded-lg bg-gradient-to-r from-[#FF7628] to-[#FF5400] px-4 py-2 text-xs font-semibold text-white shadow-lg shadow-[#FF7628]/25 hover:shadow-[#FF7628]/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-200"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#FF7628] px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-[#FF7628]/25 hover:bg-[#FF8F3D] active:scale-95 transition-all"
               >
                 <MessageCircle className="h-4 w-4" />
-                <span>WhatsApp Quote</span>
-                <div className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
+                <span className="hidden md:inline">{t.nav.whatsapp}</span>
               </a>
-            </div>
 
-            {/* Mobile Menu Button */}
-            <button
-              type="button"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden inline-flex items-center justify-center p-2 rounded-lg border border-[#29333D] bg-[#161E27] text-[#C5CCD3] hover:text-white hover:border-[#FF7628]/60 focus:outline-none"
-              aria-expanded={mobileMenuOpen}
-              aria-label="Toggle navigation menu"
-            >
-              {mobileMenuOpen ? <X className="h-5 w-5 text-[#FF7628]" /> : <Menu className="h-5 w-5" />}
-            </button>
+              {/* Mobile Menu Toggle Button */}
+              <button
+                type="button"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label="Toggle Mobile Menu"
+                className="inline-flex lg:hidden items-center justify-center rounded-lg border border-[#29333D] bg-[#161E27] p-2 text-[#C5CCD3] hover:text-white hover:border-[#384654] transition-colors"
+              >
+                {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              </button>
+            </div>
           </div>
         </div>
       </header>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden">
-          {/* Backdrop */}
-          <div
-            className="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-
-          {/* Drawer content */}
-          <div className="fixed inset-y-0 right-0 w-full max-w-xs bg-[#0F1722] border-l border-[#29333D] p-6 shadow-2xl flex flex-col justify-between overflow-y-auto">
-            <div>
-              <div className="flex items-center justify-between pb-6 border-b border-[#29333D]">
-                <div>
-                  <span className="font-display text-base font-bold text-white tracking-wider">
-                    LOGESHWARAN
-                  </span>
-                  <p className="text-[10px] tracking-wider text-[#FF7628] uppercase font-semibold">
-                    Welding & Fabrication
-                  </p>
-                </div>
+        <div className="fixed inset-0 z-40 bg-[#080B0F]/95 backdrop-blur-xl lg:hidden pt-20 px-6 pb-8 flex flex-col justify-between">
+          <div className="space-y-4">
+            {/* Language Switcher inside Mobile Menu */}
+            <div className="flex items-center justify-between rounded-xl border border-[#29333D] bg-[#111820] p-3">
+              <span className="text-xs font-semibold text-[#A8B0B9] flex items-center gap-2">
+                <Globe className="h-4 w-4 text-[#FF7628]" />
+                {language === "ta" ? "மொழியை தேர்வு செய்ய" : "Choose Language"}
+              </span>
+              <div className="flex gap-1.5">
                 <button
-                  type="button"
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="rounded-lg p-2 text-[#A8B0B9] hover:bg-[#161E27] hover:text-white"
+                  onClick={() => setLanguage("ta")}
+                  className={`px-3 py-1 text-xs font-bold rounded-lg ${
+                    language === "ta" ? "bg-[#FF7628] text-white" : "text-[#A8B0B9] bg-[#161E27]"
+                  }`}
                 >
-                  <X className="h-5 w-5" />
+                  தமிழ்
+                </button>
+                <button
+                  onClick={() => setLanguage("en")}
+                  className={`px-3 py-1 text-xs font-bold rounded-lg ${
+                    language === "en" ? "bg-[#FF7628] text-white" : "text-[#A8B0B9] bg-[#161E27]"
+                  }`}
+                >
+                  English
                 </button>
               </div>
-
-              {/* Navigation Links */}
-              <nav className="mt-6 flex flex-col space-y-1">
-                {NAV_LINKS.map((link) => {
-                  const isActive = activeSection === link.href.substring(1);
-                  return (
-                    <Link
-                      key={link.name}
-                      href={link.href}
-                      onClick={() => setMobileMenuOpen(false)}
-                      className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                        isActive
-                          ? "bg-[#161E27] text-[#FF7628] font-semibold border-l-2 border-[#FF7628]"
-                          : "text-[#A8B0B9] hover:bg-[#161E27]/50 hover:text-white"
-                      }`}
-                    >
-                      <span>{link.name}</span>
-                      {isActive && <span className="h-1.5 w-1.5 rounded-full bg-[#FF7628]" />}
-                    </Link>
-                  );
-                })}
-              </nav>
             </div>
 
-            {/* Bottom Contact Actions */}
-            <div className="pt-6 border-t border-[#29333D] space-y-3">
-              <div className="text-xs text-[#A8B0B9] mb-2">
-                <p className="font-semibold text-white">Thuraiyur, Trichy</p>
-                <p className="font-mono text-[11px] text-[#C5CCD3] mt-0.5">+91 91503 75567</p>
-              </div>
+            {/* Mobile Nav Links */}
+            <nav className="space-y-1">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.id}
+                  href={link.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="flex items-center justify-between rounded-lg px-4 py-3 text-base font-semibold text-[#C5CCD3] hover:bg-[#161E27] hover:text-white transition-colors"
+                >
+                  <span>{link.name}</span>
+                  <span className="text-xs text-[#FF7628]">→</span>
+                </Link>
+              ))}
+            </nav>
+          </div>
 
-              <a
-                href={`tel:${SITE_DATA.phones[0].primary}`}
-                className="flex w-full items-center justify-center gap-2 rounded-lg border border-[#29333D] bg-[#161E27] py-2.5 text-xs font-medium text-white hover:border-[#FF7628]"
-              >
-                <Phone className="h-4 w-4 text-[#FF7628]" />
-                <span>Call Directly</span>
-              </a>
-
-              <a
-                href={getWhatsAppUrl("Hello Logeshwaran, I'd like to get a quote.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex w-full items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-[#FF7628] to-[#FF5400] py-2.5 text-xs font-semibold text-white shadow-lg shadow-[#FF7628]/30"
-              >
-                <MessageCircle className="h-4 w-4" />
-                <span>Enquire on WhatsApp</span>
-              </a>
-            </div>
+          {/* Mobile Bottom Contact Actions */}
+          <div className="space-y-3 pt-6 border-t border-[#29333D]">
+            <a
+              href={`tel:${SITE_DATA.phones[0].primary}`}
+              className="flex items-center justify-center gap-2 rounded-xl bg-[#161E27] border border-[#384654] py-3 text-sm font-bold text-white shadow-md"
+            >
+              <Phone className="h-4 w-4 text-[#FF7628]" />
+              <span>{SITE_DATA.phones[0].display}</span>
+            </a>
+            <a
+              href={getWhatsAppUrl()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-2 rounded-xl bg-[#FF7628] py-3 text-sm font-bold text-white shadow-lg shadow-[#FF7628]/30"
+            >
+              <MessageCircle className="h-4 w-4" />
+              <span>{t.hero.ctaPrimary}</span>
+            </a>
           </div>
         </div>
       )}
     </>
   );
 }
-

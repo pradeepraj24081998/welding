@@ -1,31 +1,43 @@
 export interface BusinessConfig {
   name: string;
+  nameTa: string;
   shortName: string;
+  shortNameTa: string;
   tagline: string;
+  taglineTa: string;
   subTagline: string;
+  subTaglineTa: string;
   owner: string;
+  ownerTa: string;
   phones: {
     primary: string;
     display: string;
-    label?: string;
+    label: string;
+    labelTa: string;
   }[];
-  primaryWhatsAppNumber: string; // international digits without + or spaces e.g. 919150375567
+  primaryWhatsAppNumber: string; // 919150375567
   location: {
     address: string;
+    addressTa: string;
     city: string;
+    cityTa: string;
     district: string;
+    districtTa: string;
     state: string;
+    stateTa: string;
     country: string;
-    pincode?: string;
+    pincode: string;
     badge: string;
+    badgeTa: string;
     mapsUrl: string;
   };
   workingHours: string;
-  categories: string[];
-  targetCustomers: string[];
+  workingHoursTa: string;
   meta: {
     title: string;
+    titleTa: string;
     description: string;
+    descriptionTa: string;
     keywords: string[];
     siteUrl: string;
   };
@@ -33,54 +45,74 @@ export interface BusinessConfig {
 
 export const SITE_DATA: BusinessConfig = {
   name: "LOGESHWARAN WELDING & FABRICATION",
-  shortName: "Logeshwaran Fabrication",
+  nameTa: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்",
+  shortName: "Logeshwaran Welding",
+  shortNameTa: "லோகேஸ்வரன் வெல்டிங்",
   tagline: "PRECISION IN EVERY WELD. STRENGTH IN EVERY DETAIL.",
+  taglineTa: "துல்லியமான வேலைப்பாடு. உறுதியான வெல்டிங். நீடித்த தரம்.",
   subTagline:
-    "Expert Welding & Custom Metal Fabrication Solutions. Quality Craftsmanship for Residential, Commercial and Industrial Projects.",
+    "Expert Stainless Steel (SS) & Custom Metal Fabrication Solutions. Quality Craftsmanship for Residential, Commercial and Industrial Projects in Thuraiyur & Trichy.",
+  subTaglineTa:
+    "துறையூர் மற்றும் திருச்சியில் சிறந்த முறையில் ஸ்டெயின்லெஸ் ஸ்டீல் (SS) ரெயிலிங், கேட், கிரில், லேசர் கட்டிங் டிசைன்கள் மற்றும் வெல்டிங் வேலைகள் செய்து தரப்படும்.",
   owner: "Logeshwaran",
+  ownerTa: "லோகேஸ்வரன்",
   phones: [
-    { primary: "+919150375567", display: "+91 91503 75567", label: "Primary & WhatsApp" },
-    { primary: "+919095240008", display: "+91 90952 40008", label: "Direct Inquiries" },
-    { primary: "+919965011126", display: "+91 99650 11126", label: "Workshop Support" }
+    {
+      primary: "+919150375567",
+      display: "+91 91503 75567",
+      label: "Primary & WhatsApp",
+      labelTa: "முதன்மை & வாட்ஸ்அப்"
+    },
+    {
+      primary: "+919095240008",
+      display: "+91 90952 40008",
+      label: "Direct Inquiries",
+      labelTa: "நேரடி அழைப்பு"
+    },
+    {
+      primary: "+919965011126",
+      display: "+91 99650 11126",
+      label: "Workshop Support",
+      labelTa: "பட்டறை தொடர்பு"
+    }
   ],
   primaryWhatsAppNumber: "919150375567",
   location: {
     address: "Thuraiyur Main Road",
+    addressTa: "துறையூர் மெயின் ரோடு",
     city: "Thuraiyur",
+    cityTa: "துறையூர்",
     district: "Tiruchirappalli",
+    districtTa: "திருச்சிராப்பள்ளி",
     state: "Tamil Nadu",
+    stateTa: "தமிழ்நாடு",
     country: "India",
+    pincode: "621010",
     badge: "THURAIYUR | TIRUCHIRAPPALLI",
+    badgeTa: "துறையூர் | திருச்சிராப்பள்ளி",
     mapsUrl: "https://www.google.com/maps/search/?api=1&query=Logeshwaran+Welding+Thuraiyur+Tiruchirappalli+Tamil+Nadu"
   },
   workingHours: "Monday – Saturday: 8:30 AM – 8:00 PM | Sunday: On Appointment",
-  categories: [
-    "Stainless Steel Fabrication",
-    "Architectural Railings & Handrails",
-    "Custom Metal Gates & Grills",
-    "CNC Laser-Cut Metal Art",
-    "Commercial & Industrial Welding"
-  ],
-  targetCustomers: [
-    "Residential House Owners",
-    "Commercial Building Owners",
-    "Builders & Civil Contractors",
-    "Architects & Interior Designers",
-    "Industrial Facility Managers",
-    "Property Developers"
-  ],
+  workingHoursTa: "திங்கள் – சனி: காலை 8:30 – இரவு 8:00 | ஞாயிறு: முன்பதிவுபடி",
   meta: {
-    title: "Logeshwaran Welding & Fabrication | Stainless Steel Works in Thuraiyur",
+    title: "Logeshwaran Welding & Fabrication | Stainless Steel Works in Thuraiyur, Trichy",
+    titleTa: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன் | துறையூர், திருச்சி",
     description:
-      "Explore stainless steel staircase railings, custom metal fabrication, decorative metal designs and welding services in Thuraiyur, Tiruchirappalli.",
+      "Best welding shop in Thuraiyur & Trichy for stainless steel (SS) staircase railings, metal gates, security grills, CNC laser-cut designs, and industrial fabrication.",
+    descriptionTa:
+      "துறையூர் & திருச்சியில் உயர்தர ஸ்டெயின்லெஸ் ஸ்டீல் (SS) ரெயிலிங், கேட், கிரில், லேசர் கட்டிங் டிசைன் மற்றும் தொழில்துறை வெல்டிங் வேலைகள். தொடர்பு: +91 91503 75567.",
     keywords: [
       "Welding Thuraiyur",
+      "வெல்டிங் துறையூர்",
       "Stainless Steel Fabrication Trichy",
       "SS Staircase Railings Thuraiyur",
+      "SS ரெயிலிங் திருச்சி",
       "Laser Cut Gate Tiruchirappalli",
       "Metal Fabrication Tamil Nadu",
       "Logeshwaran Welding",
-      "Custom Metal Gates"
+      "Custom Metal Gates Thuraiyur",
+      "TIG MIG welding Trichy",
+      "Roofing shed fabrication Thuraiyur"
     ],
     siteUrl: "https://logeshwaran-welding.vercel.app"
   }
@@ -95,4 +127,3 @@ export function getWhatsAppUrl(message?: string, customPhone?: string): string {
   if (!message) return base;
   return `${base}?text=${encodeURIComponent(message)}`;
 }
-

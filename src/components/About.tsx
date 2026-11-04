@@ -3,174 +3,135 @@
 import React from "react";
 import Image from "next/image";
 import { SITE_DATA, getWhatsAppUrl } from "@/data/site";
-import { ShieldCheck, Compass, Sparkles, Users, Hammer, CheckCircle, ArrowRight } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
+import { Sparkles, Hammer, ShieldCheck, Clock, CheckCircle2, ArrowRight } from "lucide-react";
 
 export default function About() {
-  const highlights = [
+  const { language } = useLanguage();
+
+  const points = language === "ta" ? [
     {
-      title: "Quality Workmanship",
-      desc: "Robust weld penetrations, solid structural anchoring, and smooth seamless surface finishing on every job.",
-      icon: Hammer,
+      title: "நேரடி பட்டறை & கைதேர்ந்த உழைப்பு",
+      desc: "இடைத்தரகர் இன்றி எங்கள் சொந்த பட்டறையிலேயே முழு தயாரிப்பும் தரமான முறையில் செய்யப்படுகிறது.",
+      icon: Hammer
     },
     {
-      title: "Precision Fabrication",
-      desc: "Accurate dimensional cuts, mitered joints, and high-precision CNC fiber laser-cut panel integrations.",
-      icon: Compass,
+      title: "SS 304 / 316 தரமான ஸ்டீல்",
+      desc: "துருப்பிடிக்காத உயர்தர மூலப்பொருட்கள் மற்றும் துல்லியமான TIG வெல்டிங் இணைப்புகள்.",
+      icon: ShieldCheck
     },
     {
-      title: "Custom Designs",
-      desc: "Bespoke metalwork tailored to your architectural plans, stairwell contours, gate dimensions, and personal taste.",
-      icon: Sparkles,
+      title: "சரியான நேரத்தில் துரித சர்வீஸ்",
+      desc: "துறையூர் மற்றும் திருச்சி சுற்றுவட்டார பகுதிகளில் உடனடியாக அளவெடுத்து சொன்ன தேதியில் பொருத்தி தருகிறோம்.",
+      icon: Clock
+    }
+  ] : [
+    {
+      title: "In-House Workshop Craftsmanship",
+      desc: "Fabricated directly in our dedicated workshop with master-level attention to detail.",
+      icon: Hammer
     },
     {
-      title: "Customer-Focused Service",
-      desc: "Direct communication with owner Logeshwaran from initial site measurement to final handover and installation.",
-      icon: Users,
+      title: "Certified SS 304 / 316 Stainless Steel",
+      desc: "Tested rust-proof raw materials and flawless argon TIG weld joints.",
+      icon: ShieldCheck
     },
+    {
+      title: "Prompt On-Site Delivery & Setup",
+      desc: "Accurate site measurement and fast, hassle-free installation across Thuraiyur & Trichy.",
+      icon: Clock
+    }
   ];
 
   return (
-    <section id="about" className="relative py-24 sm:py-32 bg-[#0B1017] border-t border-[#29333D]/60 overflow-hidden">
-      {/* Background Decorative Accent */}
-      <div className="absolute top-1/4 right-0 -z-10 h-96 w-96 rounded-full bg-[#FF7628]/5 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-10 -z-10 h-80 w-80 rounded-full bg-[#384654]/10 blur-3xl pointer-events-none" />
+    <section id="about" className="relative py-20 sm:py-24 bg-[#0B1017] border-t border-[#29333D]/60 overflow-hidden">
+      <div className="absolute top-1/4 right-0 -z-10 h-80 w-80 rounded-full bg-[#FF7628]/5 blur-3xl pointer-events-none" />
 
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
-          {/* Left Column: Real Workshop Photography Montage */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          {/* Left Column: Workshop Image */}
           <div className="lg:col-span-6 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
-              {/* Primary Real Workshop Photo */}
-              <div className="relative h-[420px] sm:h-[480px] w-full rounded-2xl overflow-hidden border border-[#29333D] shadow-2xl group">
-                <Image
-                  src="/images/projects/real-project-3-ss-main-gate-workshop.jpg"
-                  alt="Logeshwaran Workshop Stainless Steel Gate Fabrication in Progress"
-                  fill
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                  className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#080B0F] via-transparent to-transparent opacity-80" />
-                
-                {/* Verified Photo Tag */}
-                <div className="absolute top-4 left-4 rounded-md border border-[#FF7628]/40 bg-[#080B0F]/90 px-3 py-1.5 backdrop-blur-md">
-                  <div className="flex items-center gap-1.5 text-xs font-semibold text-[#FF8F3D]">
-                    <span className="h-1.5 w-1.5 rounded-full bg-[#FF7628] animate-pulse" />
-                    <span>Real Workshop Fabrication • Thuraiyur</span>
-                  </div>
-                </div>
+            <div className="relative h-[380px] sm:h-[440px] w-full rounded-2xl overflow-hidden border border-[#29333D] shadow-2xl group">
+              <Image
+                src="/images/projects/real-project-3-ss-main-gate-workshop.jpg"
+                alt="Logeshwaran Workshop Stainless Steel Gate Fabrication"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080B0F] via-transparent to-transparent opacity-80" />
 
-                <div className="absolute bottom-4 left-4 right-4">
-                  <p className="text-xs font-mono text-[#A8B0B9] uppercase">
-                    In-House Craftsmanship
-                  </p>
-                  <p className="text-sm font-semibold text-white">
-                    Stainless Steel Gate Assembly & Buffing
-                  </p>
+              <div className="absolute top-4 left-4 rounded-md border border-[#FF7628]/40 bg-[#080B0F]/90 px-3 py-1.5 backdrop-blur-md">
+                <div className="flex items-center gap-1.5 text-xs font-semibold text-[#FF8F3D]">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#FF7628] animate-pulse" />
+                  <span>
+                    {language === "ta" ? "எங்கள் சொந்த பட்டறை • துறையூர்" : "Direct Workshop • Thuraiyur"}
+                  </span>
                 </div>
               </div>
 
-              {/* Secondary Overlapping Inset Card */}
-              <div className="hidden sm:block absolute -bottom-8 -right-6 w-64 rounded-xl border border-[#384654] bg-[#161E27]/95 p-4 shadow-2xl backdrop-blur-md">
-                <div className="flex items-center gap-3">
-                  <div className="h-12 w-12 rounded-lg overflow-hidden relative border border-[#29333D] shrink-0">
-                    <Image
-                      src="/images/about/welder-detail.jpg"
-                      alt="Welding Torch and Sparks"
-                      fill
-                      sizes="48px"
-                      className="object-cover"
-                    />
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold text-white uppercase">
-                      TIG / MIG Precision
-                    </h4>
-                    <p className="text-[11px] text-[#A8B0B9]">
-                      Clean Argon Shielded Welds
-                    </p>
-                  </div>
-                </div>
-                <div className="mt-3 flex items-center justify-between text-[11px] font-mono text-[#C5CCD3] pt-2 border-t border-[#29333D]">
-                  <span>Durability First</span>
-                  <span className="text-[#FF7628] font-semibold">100% Focused</span>
-                </div>
+              <div className="absolute bottom-4 left-4 right-4">
+                <p className="text-xs font-mono text-[#A8B0B9] uppercase">
+                  {language === "ta" ? "உரிமையாளர் நேரடி மேற்பார்வை" : "Direct Owner Supervision"}
+                </p>
+                <p className="text-sm font-semibold text-white">
+                  {language === "ta" ? "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்" : "Logeshwaran Welding & Fabrication"}
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Right Column: About Content */}
+          {/* Right Column: Punchy Content */}
           <div className="lg:col-span-6 space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#29333D] bg-[#161E27] px-3.5 py-1 text-xs font-semibold tracking-wider text-[#FF7628] uppercase">
               <Sparkles className="h-3 w-3" />
-              <span>About Logeshwaran Fabrication</span>
+              <span>{language === "ta" ? "எங்களைப் பற்றி" : "About Us"}</span>
             </div>
 
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white uppercase leading-tight">
-              CRAFTING STRENGTH. <br />
-              <span className="welding-gradient-text">CREATING PERFECTION.</span>
+            <h2 className="font-display text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white uppercase leading-tight">
+              {language === "ta" ? (
+                <>
+                  நேர்த்தியான உழைப்பு. <br />
+                  <span className="welding-gradient-text">நம்பகமான வெல்டிங் தரம்.</span>
+                </>
+              ) : (
+                <>
+                  Crafting Strength. <br />
+                  <span className="welding-gradient-text">Creating Perfection.</span>
+                </>
+              )}
             </h2>
 
-            <div className="space-y-4 text-base text-[#A8B0B9] leading-relaxed">
-              <p>
-                At <strong className="text-white font-semibold">Logeshwaran Welding & Fabrication</strong>,
-                we focus on quality workmanship, precision and attention to detail. From stylish
-                stainless-steel staircase railings to customized decorative metal designs, we aim to
-                deliver fabrication solutions that combine durability and appearance.
-              </p>
-              <p>
-                Located in Thuraiyur, Tiruchirappalli, we work directly with residential home
-                owners, commercial builders, architects, and industrial clients to build enduring,
-                structurally dependable metal structures that enhance property value and safety.
-              </p>
-            </div>
+            <p className="text-sm sm:text-base text-[#A8B0B9] leading-relaxed">
+              {language === "ta"
+                ? "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்-ல் வாடிக்கையாளரின் திருப்தியே எங்களின் முதல் இலக்கு. வீட்டின் மாடி படிக்கட்டு SS ரெயிலிங் முதல், பிரம்மாண்டமான முன்வாசல் கேட், CNC லேசர் கட்டிங் பேனல்கள் மற்றும் தொழிற்சாலை ரூஃபிங் ஷெட்கள் வரை அனைத்தையும் உறுதியாகவும் அழகாகவும் செய்து தருகிறோம்."
+                : "At Logeshwaran Welding & Fabrication, we focus on rock-solid durability and clean aesthetics. From mirror-finish SS staircase railings to heavy-duty entrance gates, CNC laser-cut art panels, and industrial roofing, we deliver reliable solutions tailored to your building."}
+            </p>
 
-            {/* 4 Core Pillars Grid */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-              {highlights.map((item) => {
-                const Icon = item.icon;
+            {/* 3 Simple Value Points */}
+            <div className="space-y-3 pt-2">
+              {points.map((pt, idx) => {
+                const Icon = pt.icon;
                 return (
-                  <div
-                    key={item.title}
-                    className="metallic-card rounded-xl p-4 transition-all duration-300"
-                  >
-                    <div className="flex items-center gap-3 mb-2">
-                      <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-[#111820] border border-[#29333D] text-[#FF7628]">
-                        <Icon className="h-4 w-4" />
-                      </div>
-                      <h3 className="text-sm font-bold text-white tracking-wide">
-                        {item.title}
-                      </h3>
+                  <div key={idx} className="flex items-start gap-3.5 rounded-xl border border-[#29333D]/70 bg-[#161E27]/50 p-3.5">
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-[#FF7628]/15 text-[#FF7628] border border-[#FF7628]/30">
+                      <Icon className="h-4 w-4" />
                     </div>
-                    <p className="text-xs text-[#A8B0B9] leading-relaxed">
-                      {item.desc}
-                    </p>
+                    <div>
+                      <h4 className="text-sm font-bold text-white">{pt.title}</h4>
+                      <p className="text-xs text-[#A8B0B9] mt-0.5">{pt.desc}</p>
+                    </div>
                   </div>
                 );
               })}
             </div>
 
-            {/* Target Client Scope */}
-            <div className="pt-2 flex flex-wrap gap-2">
-              <span className="text-xs text-[#C5CCD3] font-semibold self-center mr-1">Serving:</span>
-              {SITE_DATA.targetCustomers.slice(0, 4).map((c) => (
-                <span
-                  key={c}
-                  className="rounded-md border border-[#29333D] bg-[#111820] px-2.5 py-1 text-[11px] text-[#A8B0B9]"
-                >
-                  {c}
-                </span>
-              ))}
-            </div>
-
-            {/* Talk to Logeshwaran CTA */}
             <div className="pt-2">
               <a
-                href={getWhatsAppUrl("Hello Logeshwaran, I would like to discuss my fabrication project.")}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[#FF7628] hover:text-[#FFA048] transition-colors"
+                href={`tel:${SITE_DATA.phones[0].primary}`}
+                className="inline-flex items-center gap-2 rounded-xl bg-[#FF7628] px-5 py-3 text-xs font-bold text-white shadow-lg shadow-[#FF7628]/20 hover:bg-[#FF8F3D] transition-colors"
               >
-                <span>Discuss Your Requirements with Logeshwaran</span>
+                <span>{language === "ta" ? "நேரடி ஆலோசனை பெற" : "Consult Directly"}</span>
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>
@@ -180,4 +141,3 @@ export default function About() {
     </section>
   );
 }
-
