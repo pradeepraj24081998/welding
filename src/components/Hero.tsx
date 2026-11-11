@@ -2,16 +2,46 @@
 
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { SITE_DATA, getWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { TRANSLATIONS } from "@/data/translations";
 import HeroSparkCanvas from "@/components/HeroSparkCanvas";
 import MetallicBeam3D from "@/components/MetallicBeam3D";
-import { ArrowRight, MapPin, Phone, MessageCircle, CheckCircle2 } from "lucide-react";
+import {
+  ArrowRight,
+  MapPin,
+  Phone,
+  MessageCircle,
+  CheckCircle2,
+  Wrench,
+  Grid,
+  Hammer,
+  Shield,
+  Layers
+} from "lucide-react";
 
 export default function Hero() {
   const { language } = useLanguage();
   const t = TRANSLATIONS[language];
+
+  const servicePills = [
+    { key: "plumber", name: language === "ta" ? "பிளம்பர்" : "Plumber", icon: Wrench },
+    { key: "steel-grill-gate", name: language === "ta" ? "ஸ்டீல் கிரில் கேட்" : "Steel Grill Gate", icon: Grid },
+    { key: "fabrication", name: language === "ta" ? "ஃபேப்ரிகேஷன்" : "Fabrication", icon: Hammer },
+    { key: "stainless-steel-gates", name: language === "ta" ? "SS கேட்" : "SS Gates", icon: Shield },
+    { key: "mosquito-nets", name: language === "ta" ? "கொசு வலை" : "Mosquito Nets", icon: Layers }
+  ];
+
+  const handlePillClick = (key: string) => {
+    if (typeof window !== "undefined") {
+      window.dispatchEvent(new CustomEvent("filter-gallery", { detail: key }));
+      const el = document.getElementById("projects");
+      if (el) {
+        el.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
 
   return (
     <section
@@ -84,13 +114,36 @@ export default function Hero() {
               </div>
             </div>
 
+            {/* 5 Service Quick Jump Pills */}
+            <div className="pt-2">
+              <p className="text-[11px] font-mono uppercase tracking-wider text-[#7A889B] mb-2.5">
+                {language === "ta" ? "எங்களின் 5 முக்கிய சேவைகள்:" : "Our 5 Core Services:"}
+              </p>
+              <div className="flex flex-wrap items-center gap-2">
+                {servicePills.map((pill) => {
+                  const Icon = pill.icon;
+                  return (
+                    <button
+                      key={pill.key}
+                      type="button"
+                      onClick={() => handlePillClick(pill.key)}
+                      className="inline-flex items-center gap-1.5 rounded-lg border border-[#29333D] bg-[#161E27]/90 px-3 py-1.5 text-xs font-semibold text-[#C5CCD3] hover:border-[#FF7628] hover:text-[#FF8F3D] hover:bg-[#1F2937] transition-all cursor-pointer shadow-sm"
+                    >
+                      <Icon className="h-3.5 w-3.5 text-[#FF7628]" />
+                      <span>{pill.name}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             {/* Action Buttons */}
             <div className="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <a
                 href={getWhatsAppUrl(
                   language === "ta"
-                    ? "வணக்கம் லோகேஸ்வரன் வெல்டிங், எனது வீட்டிற்கு/கட்டிடத்திற்கு வெல்டிங் வேலை செய்ய வேண்டும். விலை விவரம் கூறவும்."
-                    : "Hello Logeshwaran Welding, I need a quotation for welding and fabrication work."
+                    ? "வணக்கம் லோகேஸ்வரன் வெல்டிங், எனது தேவையை விவாதிக்கவும் விலை விவரம் அறியவும் விரும்புகிறேன்."
+                    : "Hello Logeshwaran Welding, I would like to get a quote for your services."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"

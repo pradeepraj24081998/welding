@@ -101,7 +101,53 @@ const jsonLd = {
   "openingHours": "Mo-Sa 08:30-20:00",
   "sameAs": [
     "https://wa.me/919150375567"
-  ]
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Welding, Fabrication & Plumbing Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Plumber / Plumbing Works",
+          "description": "Water pipeline installation, PVC/CPVC pipes, bathroom & kitchen fittings, repair and maintenance."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Steel Grill Gate",
+          "description": "Custom modern MS steel grill gates, residential entrance gates, heavy-duty security gates."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Fabrication Works",
+          "description": "Structural metal fabrication, precision welding, metal frames, steel staircases, workshop fabrication."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Stainless Steel Gates",
+          "description": "SS 304 / 316 designer entrance gates, sliding gates, laser-cut decorative gates, mirror polish finish."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Mosquito Nets",
+          "description": "Window mosquito mesh, sliding mosquito net doors, magnetic mesh, pleated insect screens."
+        }
+      }
+    ]
+  }
 };
 
 export default function RootLayout({

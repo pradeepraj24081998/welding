@@ -51,9 +51,9 @@ export const SITE_DATA: BusinessConfig = {
   tagline: "PRECISION IN EVERY WELD. STRENGTH IN EVERY DETAIL.",
   taglineTa: "துல்லியமான வேலைப்பாடு. உறுதியான வெல்டிங். நீடித்த தரம்.",
   subTagline:
-    "Expert Stainless Steel (SS) & Custom Metal Fabrication Solutions. Quality Craftsmanship for Residential, Commercial and Industrial Projects in Thuraiyur & Trichy.",
+    "Expert Plumber & Plumbing Works, Steel Grill Gates, Structural Metal Fabrication, Stainless Steel (SS) Gates, and Window/Door Mosquito Nets in Thuraiyur & Trichy.",
   subTaglineTa:
-    "துறையூர் மற்றும் திருச்சியில் சிறந்த முறையில் ஸ்டெயின்லெஸ் ஸ்டீல் (SS) ரெயிலிங், கேட், கிரில், லேசர் கட்டிங் டிசைன்கள் மற்றும் வெல்டிங் வேலைகள் செய்து தரப்படும்.",
+    "துறையூர் மற்றும் திருச்சியில் சிறந்த முறையில் பிளம்பிங், ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், ஸ்டெயின்லெஸ் ஸ்டீல் (SS) கேட்டுகள் மற்றும் கொசு வலை அமைப்புகள் செய்து தரப்படும்.",
   owner: "Logeshwaran",
   ownerTa: "லோகேஸ்வரன்",
   phones: [
@@ -95,24 +95,26 @@ export const SITE_DATA: BusinessConfig = {
   workingHours: "Monday – Saturday: 8:30 AM – 8:00 PM | Sunday: On Appointment",
   workingHoursTa: "திங்கள் – சனி: காலை 8:30 – இரவு 8:00 | ஞாயிறு: முன்பதிவுபடி",
   meta: {
-    title: "Logeshwaran Welding & Fabrication | Stainless Steel Works in Thuraiyur, Trichy",
-    titleTa: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன் | துறையூர், திருச்சி",
+    title: "Logeshwaran Welding & Fabrication | Plumbing, Steel Gates & Fabrication in Thuraiyur",
+    titleTa: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன் | பிளம்பிங், ஸ்டீல் கேட், கொசு வலை - துறையூர், திருச்சி",
     description:
-      "Best welding shop in Thuraiyur & Trichy for stainless steel (SS) staircase railings, metal gates, security grills, CNC laser-cut designs, and industrial fabrication.",
+      "Premier welding & fabrication workshop in Thuraiyur, Trichy. Specialists in Plumber works, Steel Grill Gates, Metal Fabrication, Stainless Steel (SS) Gates, and Window/Door Mosquito Nets.",
     descriptionTa:
-      "துறையூர் & திருச்சியில் உயர்தர ஸ்டெயின்லெஸ் ஸ்டீல் (SS) ரெயிலிங், கேட், கிரில், லேசர் கட்டிங் டிசைன் மற்றும் தொழில்துறை வெல்டிங் வேலைகள். தொடர்பு: +91 91503 75567.",
+      "துறையூர் & திருச்சியில் உயர்தர பிளம்பிங், ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், ஸ்டெயின்லெஸ் ஸ்டீல் (SS) கேட்டுகள் மற்றும் கொசு வலை அமைப்புகள். தொடர்பு: +91 91503 75567.",
     keywords: [
       "Welding Thuraiyur",
       "வெல்டிங் துறையூர்",
-      "Stainless Steel Fabrication Trichy",
-      "SS Staircase Railings Thuraiyur",
-      "SS ரெயிலிங் திருச்சி",
-      "Laser Cut Gate Tiruchirappalli",
-      "Metal Fabrication Tamil Nadu",
+      "Plumber Thuraiyur",
+      "பிளம்பிங் துறையூர்",
+      "Steel Grill Gate Trichy",
+      "ஸ்டீல் கிரில் கேட் திருச்சி",
+      "Stainless Steel Gates Thuraiyur",
+      "SS கேட் துறையூர்",
+      "Metal Fabrication Works Tamil Nadu",
+      "Mosquito Nets Thuraiyur",
+      "கொசு வலை திருச்சி",
       "Logeshwaran Welding",
-      "Custom Metal Gates Thuraiyur",
-      "TIG MIG welding Trichy",
-      "Roofing shed fabrication Thuraiyur"
+      "TIG MIG welding Trichy"
     ],
     siteUrl: "https://logeshwaran-welding.vercel.app"
   }

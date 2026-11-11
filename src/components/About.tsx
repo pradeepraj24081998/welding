@@ -104,8 +104,8 @@ export default function About() {
 
             <p className="text-sm sm:text-base text-[#A8B0B9] leading-relaxed">
               {language === "ta"
-                ? "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்-ல் வாடிக்கையாளரின் திருப்தியே எங்களின் முதல் இலக்கு. வீட்டின் மாடி படிக்கட்டு SS ரெயிலிங் முதல், பிரம்மாண்டமான முன்வாசல் கேட், CNC லேசர் கட்டிங் பேனல்கள் மற்றும் தொழிற்சாலை ரூஃபிங் ஷெட்கள் வரை அனைத்தையும் உறுதியாகவும் அழகாகவும் செய்து தருகிறோம்."
-                : "At Logeshwaran Welding & Fabrication, we focus on rock-solid durability and clean aesthetics. From mirror-finish SS staircase railings to heavy-duty entrance gates, CNC laser-cut art panels, and industrial roofing, we deliver reliable solutions tailored to your building."}
+                ? "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்-ல் வாடிக்கையாளரின் திருப்தியே எங்களின் முதல் இலக்கு. பிரீமியம் SS 304 ஸ்டீல் கேட், நவீன ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், பிளம்பிங் (Plumbing Works) மற்றும் கொசு வலை (Mosquito Nets) அமைத்தல் என அனைத்தையும் உறுதியாகவும் துல்லியமாகவும் செய்து தருகிறோம்."
+                : "At Logeshwaran Welding & Fabrication, we focus on rock-solid durability and clean aesthetics. From premium SS 304 gates and modern steel grill gates to custom metal fabrication, professional plumbing solutions, and insect-proof mosquito net installations, we deliver reliable craftsmanship tailored to your building."}
             </p>
 
             {/* 3 Simple Value Points */}
