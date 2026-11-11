@@ -5,6 +5,7 @@ import Link from "next/link";
 import { SITE_DATA, getWhatsAppUrl } from "@/data/site";
 import { useLanguage } from "@/context/LanguageContext";
 import { TRANSLATIONS } from "@/data/translations";
+import BrandLogo from "@/components/BrandLogo";
 import { Phone, MessageCircle, Menu, X, Sparkles, Globe } from "lucide-react";
 
 export default function Navbar() {
@@ -62,12 +63,9 @@ export default function Navbar() {
             {/* Brand Logo */}
             <Link
               href="#hero"
-              className="group flex items-center gap-3 transition-transform duration-200 hover:scale-[1.01]"
+              className="group flex shrink-0 items-center gap-3 transition-transform duration-200 hover:scale-[1.01]"
             >
-              <div className="relative flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-lg bg-gradient-to-br from-[#1E293B] via-[#161E27] to-[#0F172A] border border-[#384654] shadow-md group-hover:border-[#FF7628]/60 transition-colors">
-                <Sparkles className="h-5 w-5 text-[#FF7628] animate-pulse" />
-                <div className="absolute -bottom-1 -right-1 h-2.5 w-2.5 rounded-full bg-[#FF7628] ring-2 ring-[#080B0F]" />
-              </div>
+              <BrandLogo size={42} />
 
               <div className="flex flex-col text-left">
                 <span className="font-display text-base sm:text-lg font-extrabold tracking-wider text-white uppercase group-hover:text-[#FFB86C] transition-colors leading-tight">
@@ -81,14 +79,14 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Navigation Links */}
-            <nav className="hidden lg:flex items-center gap-1 rounded-full border border-[#29333D]/80 bg-[#111820]/80 p-1.5 backdrop-blur-md shadow-inner">
+            <nav className="hidden lg:flex items-center gap-1 rounded-full border border-[#29333D]/80 bg-[#111820]/80 p-1 backdrop-blur-md shadow-inner shrink-0">
               {navLinks.map((link) => {
                 const isActive = activeSection === link.id;
                 return (
                   <Link
                     key={link.id}
                     href={link.href}
-                    className={`rounded-full px-3.5 py-1.5 text-xs font-semibold transition-all duration-200 ${
+                    className={`rounded-full px-3 py-1.5 text-xs font-semibold whitespace-nowrap transition-all duration-200 ${
                       isActive
                         ? "bg-[#FF7628] text-white shadow-md shadow-[#FF7628]/25"
                         : "text-[#C5CCD3] hover:text-white hover:bg-[#1E293B]/60"
@@ -101,13 +99,13 @@ export default function Navbar() {
             </nav>
 
             {/* Right Actions: Language Switcher + Call / WhatsApp CTA */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-2 sm:gap-3 shrink-0">
               {/* Language Switcher Pill */}
               <button
                 onClick={toggleLanguage}
                 title="Switch Language / மொழியை மாற்ற"
                 aria-label="Switch Language"
-                className="flex items-center gap-1.5 rounded-full border border-[#384654] bg-[#161E27]/90 px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-white shadow-sm hover:border-[#FF7628] hover:bg-[#1F2937] transition-all"
+                className="flex items-center gap-1.5 rounded-full border border-[#384654] bg-[#161E27]/90 px-2.5 py-1 sm:px-3 sm:py-1.5 text-xs font-bold text-white shadow-sm hover:border-[#FF7628] hover:bg-[#1F2937] transition-all shrink-0 whitespace-nowrap"
               >
                 <Globe className="h-3.5 w-3.5 text-[#FF7628]" />
                 <span className={language === "ta" ? "text-[#FF8F3D]" : "text-[#A8B0B9]"}>தமிழ்</span>
@@ -118,25 +116,25 @@ export default function Navbar() {
               {/* Call Direct Button */}
               <a
                 href={`tel:${SITE_DATA.phones[0].primary}`}
-                className="hidden sm:inline-flex items-center gap-2 rounded-lg border border-[#29333D] bg-[#161E27] px-3 py-2 text-xs font-semibold text-white hover:border-[#FF7628]/50 hover:bg-[#1F2937] transition-all shadow-sm"
+                className="hidden xl:inline-flex items-center gap-2 rounded-lg border border-[#29333D] bg-[#161E27] px-3.5 py-2 text-xs font-semibold text-white hover:border-[#FF7628]/50 hover:bg-[#1F2937] transition-all shadow-sm whitespace-nowrap shrink-0"
               >
-                <Phone className="h-3.5 w-3.5 text-[#FF7628]" />
-                <span>{SITE_DATA.phones[0].display}</span>
+                <Phone className="h-3.5 w-3.5 text-[#FF7628] shrink-0" />
+                <span className="whitespace-nowrap tracking-wide">{SITE_DATA.phones[0].display}</span>
               </a>
 
               {/* WhatsApp Quick CTA */}
               <a
                 href={getWhatsAppUrl(
                   language === "ta"
-                    ? "வணக்கம், வெல்டிங் வேலை பற்றிய விவரம் அறிய விரும்புகிறேன்."
-                    : "Hello, I would like to inquire about your welding services."
+                    ? "வணக்கம் புஜண்டமகான், எனது தேவைக்கான வேலை விவரம் மற்றும் விலை அறிய விரும்புகிறேன்."
+                    : "Hello Bujandamahan, I would like to get a quote for your services."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 rounded-lg bg-[#FF7628] px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-[#FF7628]/25 hover:bg-[#FF8F3D] active:scale-95 transition-all"
+                className="inline-flex items-center gap-1.5 rounded-lg bg-[#FF7628] px-3.5 py-2 text-xs font-bold text-white shadow-lg shadow-[#FF7628]/25 hover:bg-[#FF8F3D] active:scale-95 transition-all whitespace-nowrap shrink-0"
               >
-                <MessageCircle className="h-4 w-4" />
-                <span className="hidden md:inline">{t.nav.whatsapp}</span>
+                <MessageCircle className="h-4 w-4 shrink-0" />
+                <span className="hidden md:inline whitespace-nowrap">{t.nav.whatsapp}</span>
               </a>
 
               {/* Mobile Menu Toggle Button */}

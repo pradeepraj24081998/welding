@@ -6,6 +6,7 @@ import { SITE_DATA, getWhatsAppUrl } from "@/data/site";
 import { SERVICES_DATA } from "@/data/services";
 import { useLanguage } from "@/context/LanguageContext";
 import { TRANSLATIONS } from "@/data/translations";
+import BrandLogo from "@/components/BrandLogo";
 import { Sparkles, Phone, MapPin, Clock, MessageCircle, ArrowUp } from "lucide-react";
 
 export default function Footer() {
@@ -25,9 +26,7 @@ export default function Footer() {
           {/* Brand Col */}
           <div className="lg:col-span-4 space-y-3">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-[#161E27] border border-[#384654] text-[#FF7628]">
-                <Sparkles className="h-5 w-5" />
-              </div>
+              <BrandLogo size={40} />
               <div>
                 <span className="font-display text-base sm:text-lg font-extrabold text-white tracking-wider uppercase block leading-none">
                   {language === "ta" ? "புஜண்டமகான்" : "BUJANDAMAHAN"}
