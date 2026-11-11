@@ -89,8 +89,8 @@ export default function Services() {
 
             const whatsappMessage =
               language === "ta"
-                ? `வணக்கம் லோகேஸ்வரன் வெல்டிங், "${serviceTitle}" சேவைக்கான விலை மற்றும் கூடுதல் விவரங்கள் அறிய விரும்புகிறேன்.`
-                : `Hello Logeshwaran Welding, I would like to inquire about your "${serviceTitle}" service. Please share details and pricing.`;
+                ? `வணக்கம் புஜண்டமகான், "${serviceTitle}" சேவைக்கான விலை மற்றும் கூடுதல் விவரங்கள் அறிய விரும்புகிறேன்.`
+                : `Hello Bujandamahan Plumbing, Steel & Fabrication, I would like to inquire about your "${serviceTitle}" service. Please share details and pricing.`;
 
             return (
               <div

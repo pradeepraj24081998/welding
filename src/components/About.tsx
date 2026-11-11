@@ -75,7 +75,7 @@ export default function About() {
                   {language === "ta" ? "உரிமையாளர் நேரடி மேற்பார்வை" : "Direct Owner Supervision"}
                 </p>
                 <p className="text-sm font-semibold text-white">
-                  {language === "ta" ? "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்" : "Logeshwaran Welding & Fabrication"}
+                  {language === "ta" ? "புஜண்டமகான் Plumbing, Steel & Fabrication" : "Bujandamahan Plumbing, Steel & Fabrication"}
                 </p>
               </div>
             </div>
@@ -104,8 +104,8 @@ export default function About() {
 
             <p className="text-sm sm:text-base text-[#A8B0B9] leading-relaxed">
               {language === "ta"
-                ? "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்-ல் வாடிக்கையாளரின் திருப்தியே எங்களின் முதல் இலக்கு. பிரீமியம் SS 304 ஸ்டீல் கேட், நவீன ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், பிளம்பிங் (Plumbing Works) மற்றும் கொசு வலை (Mosquito Nets) அமைத்தல் என அனைத்தையும் உறுதியாகவும் துல்லியமாகவும் செய்து தருகிறோம்."
-                : "At Logeshwaran Welding & Fabrication, we focus on rock-solid durability and clean aesthetics. From premium SS 304 gates and modern steel grill gates to custom metal fabrication, professional plumbing solutions, and insect-proof mosquito net installations, we deliver reliable craftsmanship tailored to your building."}
+                ? "புஜண்டமகான் Plumbing, Steel & Fabrication-ல் வாடிக்கையாளரின் திருப்தியே எங்களின் முதல் இலக்கு. பிரீமியம் SS 304 ஸ்டீல் கேட், நவீன ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், பிளம்பிங் (Plumbing Works) மற்றும் கொசு வலை (Mosquito Nets) அமைத்தல் என அனைத்தையும் உறுதியாகவும் துல்லியமாகவும் செய்து தருகிறோம்."
+                : "At Bujandamahan Plumbing, Steel & Fabrication, we focus on rock-solid durability and clean aesthetics. From premium SS 304 gates and modern steel grill gates to custom metal fabrication, professional plumbing solutions, and insect-proof mosquito net installations, we deliver reliable craftsmanship tailored to your building."}
             </p>
 
             {/* 3 Simple Value Points */}

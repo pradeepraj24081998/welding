@@ -11,8 +11,8 @@ export default function WhatsAppButton() {
 
   const message =
     language === "ta"
-      ? "வணக்கம் லோகேஸ்வரன் வெல்டிங், எனது தேவையை விவாதிக்க விரும்புகிறேன்."
-      : "Hello Logeshwaran Welding, I would like to discuss my project.";
+      ? "வணக்கம் புஜண்டமகான், எனது தேவைக்கான வேலை விவரம் மற்றும் விலை அறிய விரும்புகிறேன்."
+      : "Hello Bujandamahan Plumbing, Steel & Fabrication, I would like to discuss my project.";
 
   return (
     <div className="fixed bottom-6 right-6 z-40 flex flex-col items-end">

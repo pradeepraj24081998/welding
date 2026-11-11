@@ -60,8 +60,8 @@ export default function ProjectLightbox({
 
   const whatsappMessage =
     language === "ta"
-      ? `வணக்கம் லோகேஸ்வரன் வெல்டிங், "${title}" (${catLabel}) வேலை பற்றிய விலை மற்றும் கூடுதல் விவரங்கள் அறிய விரும்புகிறேன்.`
-      : `Hello Logeshwaran Welding, I am interested in "${title}" (${catLabel}). Please share quotation and details.`;
+      ? `வணக்கம் புஜண்டமகான், "${title}" (${catLabel}) வேலை பற்றிய விலை மற்றும் கூடுதல் விவரங்கள் அறிய விரும்புகிறேன்.`
+      : `Hello Bujandamahan Plumbing, Steel & Fabrication, I am interested in "${title}" (${catLabel}). Please share quotation and details.`;
 
   return (
     <div
@@ -123,7 +123,9 @@ export default function ProjectLightbox({
                 {catLabel}
               </span>
               <span className="text-xs font-mono text-[#7A889B]">•</span>
-              <span className="text-xs text-[#A8B0B9] font-medium">Logeshwaran Works</span>
+              <span className="text-xs text-[#A8B0B9] font-medium">
+                {language === "ta" ? "புஜண்டமகான்" : "Bujandamahan Works"}
+              </span>
             </div>
 
             <h3 className="font-display text-lg sm:text-xl font-bold text-white leading-snug">

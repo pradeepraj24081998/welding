@@ -44,12 +44,12 @@ export interface BusinessConfig {
 }
 
 export const SITE_DATA: BusinessConfig = {
-  name: "LOGESHWARAN WELDING & FABRICATION",
-  nameTa: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்",
-  shortName: "Logeshwaran Welding",
-  shortNameTa: "லோகேஸ்வரன் வெல்டிங்",
+  name: "புஜண்டமகான் Plumbing, Steel & Fabrication",
+  nameTa: "புஜண்டமகான் Plumbing, Steel & Fabrication",
+  shortName: "புஜண்டமகான்",
+  shortNameTa: "புஜண்டமகான்",
   tagline: "PRECISION IN EVERY WELD. STRENGTH IN EVERY DETAIL.",
-  taglineTa: "துல்லியமான வேலைப்பாடு. உறுதியான வெல்டிங். நீடித்த தரம்.",
+  taglineTa: "துல்லியமான வேலைப்பாடு. உறுதியான தரம். நீடித்த பாதுகாப்பு.",
   subTagline:
     "Expert Plumber & Plumbing Works, Steel Grill Gates, Structural Metal Fabrication, Stainless Steel (SS) Gates, and Window/Door Mosquito Nets in Thuraiyur & Trichy.",
   subTaglineTa:
@@ -95,13 +95,16 @@ export const SITE_DATA: BusinessConfig = {
   workingHours: "Monday – Saturday: 8:30 AM – 8:00 PM | Sunday: On Appointment",
   workingHoursTa: "திங்கள் – சனி: காலை 8:30 – இரவு 8:00 | ஞாயிறு: முன்பதிவுபடி",
   meta: {
-    title: "Logeshwaran Welding & Fabrication | Plumbing, Steel Gates & Fabrication in Thuraiyur",
-    titleTa: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன் | பிளம்பிங், ஸ்டீல் கேட், கொசு வலை - துறையூர், திருச்சி",
+    title: "புஜண்டமகான் Plumbing, Steel & Fabrication | Thuraiyur, Trichy",
+    titleTa: "புஜண்டமகான் Plumbing, Steel & Fabrication | பிளம்பிங், ஸ்டீல் கேட், கொசு வலை - துறையூர்",
     description:
-      "Premier welding & fabrication workshop in Thuraiyur, Trichy. Specialists in Plumber works, Steel Grill Gates, Metal Fabrication, Stainless Steel (SS) Gates, and Window/Door Mosquito Nets.",
+      "புஜண்டமகான் Plumbing, Steel & Fabrication - Premier workshop in Thuraiyur, Trichy. Specialists in Plumber works, Steel Grill Gates, Metal Fabrication, Stainless Steel (SS) Gates, and Window/Door Mosquito Nets.",
     descriptionTa:
-      "துறையூர் & திருச்சியில் உயர்தர பிளம்பிங், ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், ஸ்டெயின்லெஸ் ஸ்டீல் (SS) கேட்டுகள் மற்றும் கொசு வலை அமைப்புகள். தொடர்பு: +91 91503 75567.",
+      "புஜண்டமகான் Plumbing, Steel & Fabrication - துறையூர் & திருச்சியில் உயர்தர பிளம்பிங், ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், ஸ்டெயின்லெஸ் ஸ்டீல் (SS) கேட்டுகள் மற்றும் கொசு வலை அமைப்புகள். தொடர்பு: +91 91503 75567.",
     keywords: [
+      "புஜண்டமகான்",
+      "Bujandamahan Plumbing Steel Fabrication",
+      "Bujandamahan Thuraiyur",
       "Welding Thuraiyur",
       "வெல்டிங் துறையூர்",
       "Plumber Thuraiyur",

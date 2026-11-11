@@ -207,7 +207,7 @@ export default function Projects() {
                       <ArrowRight className="h-3.5 w-3.5" />
                     </button>
                     <span className="text-[11px] font-mono text-[#7A889B]">
-                      Logeshwaran
+                      {language === "ta" ? "புஜண்டமகான்" : "Bujandamahan"}
                     </span>
                   </div>
                 </div>

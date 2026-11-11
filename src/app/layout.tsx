@@ -14,11 +14,11 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_DATA.meta.siteUrl),
   title: {
-    default: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன் | Logeshwaran Welding Thuraiyur",
+    default: "புஜண்டமகான் Plumbing, Steel & Fabrication | Thuraiyur, Trichy",
     template: `%s | ${SITE_DATA.name}`
   },
   description:
-    "துறையூர் மற்றும் திருச்சியில் சிறந்த ஸ்டெயின்லெஸ் ஸ்டீல் (SS) ரெயிலிங், கேட், கிரில், லேசர் கட்டிங் மற்றும் மெட்டல் ஃபேப்ரிகேஷன் வேலைகள். Best Welding & SS Fabrication in Thuraiyur.",
+    "துறையூர் மற்றும் திருச்சியில் சிறந்த பிளம்பிங் (Plumber), ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், ஸ்டெயின்லெஸ் ஸ்டீல் (SS) கேட் மற்றும் கொசு வலை அமைப்புகள். புஜண்டமகான் Plumbing, Steel & Fabrication.",
   keywords: SITE_DATA.meta.keywords,
   authors: [{ name: SITE_DATA.owner }],
   creator: SITE_DATA.owner,
@@ -26,29 +26,29 @@ export const metadata: Metadata = {
   appleWebApp: {
     capable: true,
     statusBarStyle: "black-translucent",
-    title: "Logeshwaran Welding"
+    title: "புஜண்டமகான்"
   },
   openGraph: {
     type: "website",
     locale: "ta_IN",
     alternateLocale: ["en_IN"],
     url: SITE_DATA.meta.siteUrl,
-    title: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன் | Thuraiyur, Trichy",
-    description: "உயர்தர ஸ்டெயின்லெஸ் ஸ்டீல் ரெயிலிங், கேட், கிரில் & லேசர் கட்டிங் மெட்டல் ஒர்க்ஸ். தொடர்பு: +91 91503 75567",
+    title: "புஜண்டமகான் Plumbing, Steel & Fabrication | Thuraiyur, Trichy",
+    description: "உயர்தர பிளம்பிங், ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், SS கேட் & கொசு வலை அமைப்புகள். தொடர்பு: +91 91503 75567",
     siteName: SITE_DATA.name,
     images: [
       {
         url: "/images/hero/welding-sparks-hero.jpg",
         width: 1200,
         height: 630,
-        alt: "Logeshwaran Welding & Fabrication Workshop Thuraiyur"
+        alt: "புஜண்டமகான் Plumbing, Steel & Fabrication Workshop Thuraiyur"
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன் | Logeshwaran Welding",
-    description: "உயர்தர ஸ்டெயின்லெஸ் ஸ்டீல் (SS) மற்றும் மெட்டல் ஃபேப்ரிகேஷன் வேலைகள் - துறையூர், திருச்சி.",
+    title: "புஜண்டமகான் Plumbing, Steel & Fabrication",
+    description: "உயர்தர பிளம்பிங், ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், SS கேட் & கொசு வலை - துறையூர், திருச்சி.",
     images: ["/images/hero/welding-sparks-hero.jpg"]
   },
   icons: {
@@ -67,10 +67,10 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "@id": `${SITE_DATA.meta.siteUrl}/#business`,
-  "name": "LOGESHWARAN WELDING & FABRICATION",
-  "alternateName": "லோகேஸ்வரன் வெல்டிங் & ஃபேப்ரிகேஷன்",
+  "name": "புஜண்டமகான் Plumbing, Steel & Fabrication",
+  "alternateName": "Bujandamahan Plumbing, Steel & Fabrication",
   "description":
-    "துறையூர் மற்றும் திருச்சியில் சிறந்த ஸ்டெயின்லெஸ் ஸ்டீல் (SS) ரெயிலிங், கேட், கிரில், லேசர் கட்டிங் டிசைன் மற்றும் தொழில்துறை வெல்டிங் வேலைகள்.",
+    "துறையூர் மற்றும் திருச்சியில் சிறந்த பிளம்பிங் (Plumber), ஸ்டீல் கிரில் கேட், மெட்டல் ஃபேப்ரிகேஷன், ஸ்டெயின்லெஸ் ஸ்டீல் (SS) கேட் மற்றும் கொசு வலை அமைப்புகள்.",
   "image": `${SITE_DATA.meta.siteUrl}/images/hero/welding-sparks-hero.jpg`,
   "telephone": "+919150375567",
   "currenciesAccepted": "INR",
@@ -163,7 +163,7 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <meta name="application-name" content="Logeshwaran Welding" />
+        <meta name="application-name" content="புஜண்டமகான் Plumbing, Steel & Fabrication" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
         <meta name="format-detection" content="telephone=no" />

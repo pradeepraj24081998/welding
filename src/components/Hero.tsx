@@ -142,8 +142,8 @@ export default function Hero() {
               <a
                 href={getWhatsAppUrl(
                   language === "ta"
-                    ? "வணக்கம் லோகேஸ்வரன் வெல்டிங், எனது தேவையை விவாதிக்கவும் விலை விவரம் அறியவும் விரும்புகிறேன்."
-                    : "Hello Logeshwaran Welding, I would like to get a quote for your services."
+                    ? "வணக்கம் புஜண்டமகான், எனது தேவைக்கான வேலை விவரம் மற்றும் விலை அறிய விரும்புகிறேன்."
+                    : "Hello Bujandamahan Plumbing, Steel & Fabrication, I would like to get a quote for your services."
                 )}
                 target="_blank"
                 rel="noopener noreferrer"

@@ -139,7 +139,7 @@ export const TRANSLATIONS: Record<"ta" | "en", TranslationSchema> = {
     },
     whyUs: {
       badge: "எங்கள் சிறப்பு",
-      title: "ஏன் லோகேஸ்வரன் வெல்டிங்கை தேர்ந்தெடுக்க வேண்டும்?",
+      title: "ஏன் புஜண்டமகான் நிறுவனத்தை தேர்ந்தெடுக்க வேண்டும்?",
       subtitle: "இடைத்தரகர் இன்றி நேரடி பட்டறை விலை, நம்பகமான மூலப்பொருட்கள் மற்றும் அனுபவ உழைப்பு.",
       items: [
         {
@@ -260,7 +260,7 @@ export const TRANSLATIONS: Record<"ta" | "en", TranslationSchema> = {
     },
     whyUs: {
       badge: "ADVANTAGES",
-      title: "Why Choose Logeshwaran Welding?",
+      title: "Why Choose Bujandamahan Plumbing, Steel & Fabrication?",
       subtitle: "Transparent workshop pricing, master craftsmanship, and long-lasting structural strength.",
       items: [
         {

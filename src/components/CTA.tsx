@@ -59,8 +59,8 @@ export default function CTA() {
           <a
             href={getWhatsAppUrl(
               language === "ta"
-                ? "வணக்கம் லோகேஸ்வரன் வெல்டிங், எனது தேவையை விவாதிக்க விரும்புகிறேன்."
-                : "Hello Logeshwaran Welding, I would like to discuss my project."
+                ? "வணக்கம் புஜண்டமகான், எனது தேவைக்கான வேலை விவரம் பற்றி விவாதிக்க விரும்புகிறேன்."
+                : "Hello Bujandamahan Plumbing, Steel & Fabrication, I would like to discuss my project."
             )}
             target="_blank"
             rel="noopener noreferrer"

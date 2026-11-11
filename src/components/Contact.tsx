@@ -57,23 +57,23 @@ export default function Contact() {
     setFormErrors({});
 
     const formattedMessage = language === "ta" ? [
-      `*புதிய வெல்டிங் விசாரணை*`,
+      `*புதிய வேலை விசாரணை*`,
       `---------------------------------`,
       `*பெயர்:* ${formData.name}`,
       `*மொபைல்:* ${formData.phone}`,
       `*தேவையான வேலை:* ${formData.service}`,
       formData.description ? `*விவரம்:* ${formData.description}` : "",
       `---------------------------------`,
-      `_லோகேஸ்வரன் வெல்டிங் தளம் வழியாக அனுப்பப்பட்டது_`
+      `_புஜண்டமகான் Plumbing, Steel & Fabrication தளம் வழியாக அனுப்பப்பட்டது_`
     ].filter(Boolean).join("\n") : [
-      `*NEW FABRICATION ENQUIRY*`,
+      `*NEW INQUIRY*`,
       `---------------------------------`,
       `*Customer Name:* ${formData.name}`,
       `*Phone:* ${formData.phone}`,
       `*Service Required:* ${formData.service}`,
       formData.description ? `*Details:* ${formData.description}` : "",
       `---------------------------------`,
-      `_Sent via Logeshwaran Welding Website_`
+      `_Sent via Bujandamahan Plumbing, Steel & Fabrication Website_`
     ].filter(Boolean).join("\n");
 
     const whatsappUrl = getWhatsAppUrl(formattedMessage);

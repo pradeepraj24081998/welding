@@ -258,7 +258,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       ta: ["ஆர்கான் வாயு கவச வெல்டிங்", "உயர்ந்த கூட்டு பலம்", "பட்டறை நேரடி தயாரிப்பு"],
       en: ["Argon Gas Shielded Process", "High Tensile Weld Integrity", "Direct Workshop Craft"]
     },
-    location: { ta: "லோகேஸ்வரன் பட்டறை, துறையூர்", en: "Logeshwaran Workshop, Thuraiyur" }
+    location: { ta: "புஜண்டமகான் பட்டறை, துறையூர்", en: "Bujandamahan Workshop, Thuraiyur" }
   },
   {
     id: "fabrication-02",
@@ -431,7 +431,7 @@ export const PROJECTS_DATA: ProjectItem[] = [
       ta: ["பட்டறை நேரடி தயாரிப்பு", "மிரர் பளபளப்பு பஃப்பிங்", "நேரடி விலை & உத்தரவாதம்"],
       en: ["Direct Workshop Craft", "Mirror Buffed Finish", "Direct Manufacturer Rate"]
     },
-    location: { ta: "லோகேஸ்வரன் பட்டறை, துறையூர்", en: "Logeshwaran Workshop, Thuraiyur" }
+    location: { ta: "புஜண்டமகான் பட்டறை, துறையூர்", en: "Bujandamahan Workshop, Thuraiyur" }
   },
 
   // 5. MOSQUITO NETS CATEGORY

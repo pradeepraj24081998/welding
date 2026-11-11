@@ -29,11 +29,11 @@ export default function Footer() {
                 <Sparkles className="h-5 w-5" />
               </div>
               <div>
-                <span className="font-display text-base sm:text-lg font-bold text-white tracking-wider uppercase block leading-none">
-                  {language === "ta" ? "லோகேஸ்வரன்" : "LOGESHWARAN"}
+                <span className="font-display text-base sm:text-lg font-extrabold text-white tracking-wider uppercase block leading-none">
+                  {language === "ta" ? "புஜண்டமகான்" : "BUJANDAMAHAN"}
                 </span>
                 <span className="text-[10px] font-semibold tracking-wider text-[#FF7628] uppercase">
-                  {language === "ta" ? "வெல்டிங் & ஃபேப்ரிகேஷன்" : "WELDING & FABRICATION"}
+                  Plumbing, Steel & Fabrication
                 </span>
               </div>
             </div>

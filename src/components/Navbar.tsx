@@ -70,12 +70,12 @@ export default function Navbar() {
               </div>
 
               <div className="flex flex-col text-left">
-                <span className="font-display text-base sm:text-lg font-bold tracking-wider text-white uppercase group-hover:text-[#FFB86C] transition-colors leading-tight">
-                  {language === "ta" ? "லோகேஸ்வரன்" : "LOGESHWARAN"}
+                <span className="font-display text-base sm:text-lg font-extrabold tracking-wider text-white uppercase group-hover:text-[#FFB86C] transition-colors leading-tight">
+                  {language === "ta" ? "புஜண்டமகான்" : "BUJANDAMAHAN"}
                 </span>
-                <span className="text-[10px] font-semibold tracking-wider text-[#A8B0B9] uppercase flex items-center gap-1.5">
+                <span className="text-[10px] font-semibold tracking-wider text-[#FF7628] uppercase flex items-center gap-1.5">
                   <span className="h-1 w-1 rounded-full bg-[#FF7628]" />
-                  {language === "ta" ? "வெல்டிங் & ஃபேப்ரிகேஷன்" : "WELDING & FABRICATION"}
+                  Plumbing, Steel & Fabrication
                 </span>
               </div>
             </Link>
